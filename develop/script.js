@@ -37,7 +37,6 @@ function renderRows() {
             }
        }
     
-        
         // Creates text area and buttons
         var textArea = $('<textarea>').addClass('col-10 description time-block');
         var saveBtn = $('<button>').addClass('saveBtn col-1');
@@ -46,18 +45,6 @@ function renderRows() {
         saveBtn.append(saveIcon);
     }
 }
-
-renderRows();
-    for (i=0; i < militaryHours.length; i++) {
-        // Sets css classes based on current time
-        if (currentHour < militaryHours[i]) {
-            row.addClass('past');
-        } else if (currentHour == militaryHours[i]) {
-            row.addClass('present');
-        } else if (currentHour > militaryHours[i]) {
-            row.addClass('future');
-        }
-    }
 
 
 $('.saveBtn').click(storeNotes);
