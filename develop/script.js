@@ -46,6 +46,7 @@ function renderRows() {
     }
 }
 
+renderRows();
 
 $('.saveBtn').click(storeNotes);
 
