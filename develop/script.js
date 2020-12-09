@@ -1,14 +1,13 @@
 // Display current date/time at top of page
 let newDate = new Date();
 const nowDate = moment().format('MMMM Do YYYY, h:mm:ss a');
-var displayDate = document.getElementById('currentDay');
+const displayDate = document.getElementById('currentDay');
 displayDate.innerHTML = nowDate;
 
 // Variables
 const nowMoment = moment();
 const currentTime = nowMoment.format('LT');
 const currentHour =  newDate.getHours();
-console.log(currentHour);
 
 const container = $('.container');
 const businessHours = ['9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm' ];
@@ -35,19 +34,19 @@ function renderRows() {
        
         if (currentHour > militaryHours[i]) {
             row.addClass('past');
-        } else if (currentHour < militaryHours[i]) {
-            row.addClass('future');
         } else if (currentHour == militaryHours[i]) {
             row.addClass('present');
+        } else if (currentHour < militaryHours[i]) {
+            row.addClass('future');
         }
     
     
         // Creates text area and buttons
-        var textArea = $('<textarea>').addClass('col-10 description time-block');
-        textArea.attr("id", "input");
-        var saveBtn = $('<button>').addClass('saveBtn col-1');
+        let textArea = $('<textarea>').addClass('col-10 description time-block');
+        textArea.attr("id", "text-area");
+        let saveBtn = $('<button>').addClass('saveBtn col-1').attr('data-hour', militaryHours[i]);
         row.append(column, textArea, saveBtn);
-        var saveIcon = $('<i>').addClass('fa fa-save');
+        let saveIcon = $('<i>').addClass('fa fa-save');
         saveBtn.append(saveIcon);
     }
 }
@@ -55,16 +54,20 @@ function renderRows() {
 // Save button event listener
 $('.saveBtn').click(storeNotes);
 
+// var note = $('.saveBtn').attr('data-hour');
+// console.log(note);
 function getNotes () {
     // Retrieve notes from local storage
-
+    let notes = localStorage.getItem('note');
     // Display notes retrieved on page
-}
+    $('#text-area').text(notes);
+}   
 
 
 function storeNotes() {
     console.log("Save Button works!");
     // Set notes to local storage
-    let userInput = $('#input');
-    localStorage.setItem("note", userInput.value);
+    let userInput = $('#text-area');
+    localStorage.setItem('note', userInput.val());
+    console.log(userInput);
 }
