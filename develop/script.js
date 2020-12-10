@@ -44,7 +44,7 @@ function renderRows() {
         // Creates text area and buttons
         let textArea = $('<textarea>').addClass('col-10 description time-block');
         textArea.attr("id", "text-area");
-        let saveBtn = $('<button>').addClass('saveBtn col-1').attr('data-hour', militaryHours[i]);
+        let saveBtn = $('<button>').addClass('saveBtn col-1').attr('id', militaryHours[i]);
         row.append(column, textArea, saveBtn);
         let saveIcon = $('<i>').addClass('fa fa-save');
         saveBtn.append(saveIcon);
@@ -54,7 +54,7 @@ function renderRows() {
 // Save button event listener
 $('.saveBtn').click(storeNotes);
 
-// var note = $('.saveBtn').attr('data-hour');
+// var note = $('.saveBtn select').val('10');
 // console.log(note);
 function getNotes () {
     // Retrieve notes from local storage
@@ -64,10 +64,17 @@ function getNotes () {
 }   
 
 
-function storeNotes() {
-    console.log("Save Button works!");
+function storeNotes(event) {
+    // alert("save button works!");
+
+    // let hourBlock = $(event.target + '#');
+    // console.log(hourBlock);
+    // let hourBlock = $('#10');
+    
     // Set notes to local storage
-    let userInput = $('#text-area');
-    localStorage.setItem('note', userInput.val());
-    console.log(userInput);
+    hourBlock.each( function(){
+
+        let userInput = $('#text-area');
+        localStorage.setItem('note', userInput.val());
+    })
 }
