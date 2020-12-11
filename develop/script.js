@@ -13,12 +13,12 @@ const container = $('.container');
 const businessHours = ['9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm' ];
 const militaryHours = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
-// Call functions
+// Renders row immediately when the page loads
 renderRows();
-getNotes();
+
 
 function renderRows() {
-    for (i=0; i < militaryHours.length; i++) {
+    for (let i=0; i < militaryHours.length; i++) {
         // Creates row
         var row = $('<div>');
         row.addClass('row time-block');
@@ -30,8 +30,7 @@ function renderRows() {
             column.text(businessHours[i]);
         }
 
-       // Render row colors
-       
+       // Render row colors based on the current hour
         if (currentHour > militaryHours[i]) {
             row.addClass('past');
         } else if (currentHour == militaryHours[i]) {
@@ -41,40 +40,28 @@ function renderRows() {
         }
     
     
-        // Creates text area and buttons
-        let textArea = $('<textarea>').addClass('col-10 description time-block');
-        textArea.attr("id", "text-area");
+        // Creates text area and buttons and sets classes and ids for each
+        let textArea = $('<textarea>').addClass('col-10 description time-block text-area').attr('id', militaryHours[i]);
         let saveBtn = $('<button>').addClass('saveBtn col-1').attr('id', militaryHours[i]);
         row.append(column, textArea, saveBtn);
         let saveIcon = $('<i>').addClass('fa fa-save');
         saveBtn.append(saveIcon);
+
+        // Gets the notes from local storage and displays them in the rendered rows
+        var getNote = localStorage.getItem(militaryHours[i]);
+        if (localStorage.key(i) === $('.text-area').attr('id')); {
+            textArea.text(JSON.parse(getNote));           
+        }
     }
 }
 
 // Save button event listener
 $('.saveBtn').click(storeNotes);
 
-// var note = $('.saveBtn select').val('10');
-// console.log(note);
-function getNotes () {
-    // Retrieve notes from local storage
-    let notes = localStorage.getItem('note');
-    // Display notes retrieved on page
-    $('#text-area').text(notes);
-}   
-
-
-function storeNotes(event) {
-    // alert("save button works!");
-
-    // let hourBlock = $(event.target + '#');
-    // console.log(hourBlock);
-    // let hourBlock = $('#10');
-    
-    // Set notes to local storage
-    hourBlock.each( function(){
-
-        let userInput = $('#text-area');
-        localStorage.setItem('note', userInput.val());
-    })
+// When save button this function is called & sets notes to local storage
+function storeNotes() {
+    console.log("save button works!");
+    let localStorageKey = $(this).attr('id');
+    let localStorageValue = $(this).siblings('textarea').val();
+    localStorage.setItem(localStorageKey, JSON.stringify(localStorageValue));
 }
