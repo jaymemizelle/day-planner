@@ -7,6 +7,7 @@ This is a responsive application designed to use client-side storage in order to
 * [Main Page](#main-page)
 * [Built With](#built-with)
 * [Deployment](#deployment)
+* [Next Steps](#next-steps)
 * [Author](#author)
 
 ## Getting Started
