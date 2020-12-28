@@ -9,8 +9,8 @@ This is a responsive application designed to use client-side storage in order to
 * jQuery
 * Moment.js
 
+# Deployment: 
+
 ![application-image](./assets/images/day-planner-screenshot.png)
 
-# Deployed Application Url: 
-
- * https://jaymemizelle.github.io/day-planner/
+ * Deployed Application Url: https://jaymemizelle.github.io/day-planner/
