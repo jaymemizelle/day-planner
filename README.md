@@ -4,14 +4,16 @@ This is a responsive application designed to use client-side storage in order to
 
 ## Table of Contents
 * [Getting Started](#getting-started)
-* [Built With](#built-with)
 * [Main Page](#main-page)
+* [Built With](#built-with)
 * [Deployment](#deployment)
 * [Author](#author)
 
 ## Getting Started
 There are no special instructions to get a copy of this project up and running on your local machine. Simply click on the deployed application link or copy and paste the url into your search bar to open in the browser of your choice.
 
+## Main Page
+![application-image](./assets/images/day-planner-screenshot.png)
 
 ## Built With
 * HTML
@@ -19,9 +21,6 @@ There are no special instructions to get a copy of this project up and running o
 * Javascript
 * jQuery
 * Moment.js
-
-## Main Page
-![application-image](./assets/images/day-planner-screenshot.png)
 
 ## Deployment: 
 
